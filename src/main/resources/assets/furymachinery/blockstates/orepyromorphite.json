@@ -1,0 +1,10 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "furymachinery:orepyromorphite"
+  },
+  "variants": {
+    "normal": [{}],
+    "inventory": [{}]
+  }
+}
