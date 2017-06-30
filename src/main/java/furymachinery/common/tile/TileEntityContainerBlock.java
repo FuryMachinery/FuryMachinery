@@ -32,7 +32,6 @@ public abstract class TileEntityContainerBlock extends TileEntity implements ITi
 	protected boolean hasCustomName;
 	protected String customName, name;
 	protected ItemStackHandler stackHandler;
-	protected NonNullList<ItemStack> handlerInventory;
 
 	public TileEntityContainerBlock(EnumTier tier, String name) {
 		tierID = tier.getID();
@@ -42,10 +41,6 @@ public abstract class TileEntityContainerBlock extends TileEntity implements ITi
 			@Override
 			protected void onContentsChanged(int slot) {
 				markDirty();
-			}
-
-			public void getInventory() {
-				handlerInventory = stacks;
 			}
 		};
 	}
@@ -121,15 +116,4 @@ public abstract class TileEntityContainerBlock extends TileEntity implements ITi
 	public ItemStack getStackInSlot(int index) {
 		return stackHandler.getStackInSlot(index);
 	}
-
-	public ItemStack decrStackSize(int index, int count) {
-		return ItemStackHelper.getAndSplit(handlerInventory, index, count);
-	}
-
-	public ItemStack removeStackFromSlot(int index) {
-		return ItemStackHelper.getAndRemove(handlerInventory, index);
-	}
-
-	public abstract int getInventoryStackLimit();
-
 }
